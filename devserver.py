@@ -61,20 +61,17 @@ class Handler(SimpleHTTPRequestHandler):
         name = (payload.get("name") or "").strip()[:120]
         email = (payload.get("email") or "").strip()[:200].lower()
 
-        if not name:
-            return self.send_json(400, {"success": False, "error": "Add your name so we know who to greet."})
-
         if not EMAIL_RE.match(email):
             return self.send_json(400, {"success": False, "error": "That email address doesn’t look right."})
 
         if any(row["email"] == email for row in load()):
             return self.send_json(200, {"success": True})  # already on the list; stay quiet about it
 
-        row = {"name": name, "email": email, "at": datetime.now(timezone.utc).isoformat()}
+        row = {"name": name or None, "email": email, "at": datetime.now(timezone.utc).isoformat()}
         with open(STORE, "a", encoding="utf-8") as handle:
             handle.write(json.dumps(row) + "\n")
 
-        print(f"  signup: {name} <{email}>", flush=True)
+        print(f"  signup: {name or '(no name)'} <{email}>", flush=True)
         return self.send_json(200, {"success": True})
 
 

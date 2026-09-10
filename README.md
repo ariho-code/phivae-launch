@@ -5,13 +5,19 @@ Static HTML/CSS/JS plus one serverless function that emails launch-list signups.
 
 ## What's on it
 
-- The Phivae mark, a "launching soon" status and a countdown to launch
+- The Phivae mark, the headline promise, and a countdown to opening
 - **Tasobya** — cover art linking straight to Spotify, plus the Spotify player
-- Launch-list signup (name + email)
+- What the finished site will do: tickets, store, releases, news
+- Launch-list signup (email only)
 - Links to Spotify, Apple Music, YouTube, Instagram and TikTok
 
-One centred column at every width. No portrait, no cards, no icon font — the
-social marks are inline SVG, so the page pulls in nothing but the webfont.
+Copy leads with what visitors actually get rather than the "launching soon"
+pattern, and the signup takes one field — every extra field costs signups.
+
+One centred column at every width — gutters verified symmetric from 320px to
+1920px. No cards, no icon font: every mark is inline SVG, so the page pulls in
+nothing but the webfont. The background is pure CSS — three drifting colour
+pools, a grain overlay and a vignette, nothing to download.
 
 ## Moving the countdown
 

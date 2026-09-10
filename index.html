@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a0710">
 
-<title>Phivae — launching soon</title>
-<meta name="description" content="phivae.com goes live soon. Tasobya is out now — stream it while you wait, and get an alert the moment we launch.">
+<title>Phivae — tickets, merch and new music, one place</title>
+<meta name="description" content="phivae.com is almost here: show tickets paid by mobile money, the official store, and every new release first. Tasobya is out now.">
 
 <link rel="icon" href="assets/icon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Phivae — launching soon">
-<meta property="og:description" content="Tasobya is out now. Get an alert the moment phivae.com goes live.">
+<meta property="og:title" content="Phivae — tickets, merch and new music, one place">
+<meta property="og:description" content="Tasobya is out now. Be first through the door when phivae.com opens.">
 <meta property="og:image" content="https://phivae.com/assets/tasobya.jpg">
 <meta property="og:url" content="https://phivae.com">
 <meta name="twitter:card" content="summary_large_image">
@@ -25,23 +25,30 @@
 </head>
 
 <body>
-<div class="aurora" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true">
+  <span class="bg__pool bg__pool--a"></span>
+  <span class="bg__pool bg__pool--b"></span>
+  <span class="bg__pool bg__pool--c"></span>
+  <span class="bg__grain"></span>
+</div>
 
 <main class="page">
 
-  <!-- ============ Mark + countdown ============ -->
+  <!-- ============ Mark, promise, countdown ============ -->
   <header class="block">
     <img class="logo reveal" src="assets/logo.png" alt="Phivae"
          width="440" height="440" fetchpriority="high">
 
-    <p class="status reveal" data-d="1">
-      <span class="status__dot" aria-hidden="true"></span>
-      Launching soon
+    <h1 class="title reveal" data-d="1">Everything Phivae,<br>in one place</h1>
+
+    <p class="lede lede--wide reveal" data-d="2">
+      Show tickets, official merch and every new release — all moving to
+      <strong>phivae.com</strong>.
     </p>
 
-    <h1 class="title reveal" data-d="2">The new phivae.com</h1>
+    <p class="cd-label reveal" data-d="3">Doors open in</p>
 
-    <div class="countdown reveal" data-d="3" id="countdown" role="timer" aria-live="off">
+    <div class="countdown reveal" data-d="3" id="countdown" role="timer">
       <div class="unit">
         <span class="unit__num" id="cd-h">24</span>
         <span class="unit__label">Hours</span>
@@ -61,7 +68,7 @@
     <p class="sr-only" id="cd-announce" role="status" aria-live="polite"></p>
   </header>
 
-  <!-- ============ Latest release ============ -->
+  <!-- ============ Out now ============ -->
   <section class="block" aria-labelledby="release-title">
     <a class="art reveal" data-d="4"
        href="https://open.spotify.com/track/2UQF9lhGULdbj2mba6wCni"
@@ -70,11 +77,11 @@
            width="640" height="640" fetchpriority="high" decoding="async">
     </a>
 
-    <p class="eyebrow reveal" data-d="4">Latest release</p>
-    <h2 class="release reveal" id="release-title" data-d="4">Tasobya</h2>
-    <p class="lede reveal" data-d="4">Out now. Press play while you wait.</p>
+    <p class="eyebrow">Out now</p>
+    <h2 class="release" id="release-title">Tasobya</h2>
+    <p class="lede">Don't wait for the site. Press play.</p>
 
-    <div class="player reveal" data-d="4">
+    <div class="player">
       <iframe
         title="Tasobya on Spotify"
         src="https://open.spotify.com/embed/track/2UQF9lhGULdbj2mba6wCni?utm_source=generator"
@@ -84,22 +91,60 @@
     </div>
   </section>
 
-  <!-- ============ Notify ============ -->
+  <!-- ============ What the site will do ============ -->
+  <section class="block" aria-labelledby="coming-title">
+    <h2 class="h-sm" id="coming-title">What you'll find inside</h2>
+
+    <ul class="offer">
+      <li>
+        <span class="offer__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M2 9a3 3 0 1 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 1 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 11v2M13 17v2"/></svg>
+        </span>
+        <h3>Tickets to the shows</h3>
+        <p>Book a seat and pay straight from your phone with MTN or Airtel Money. Your ticket lands in your inbox.</p>
+      </li>
+
+      <li>
+        <span class="offer__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </span>
+        <h3>The official store</h3>
+        <p>Merch you can only get here, ordered and paid for without leaving the page.</p>
+      </li>
+
+      <li>
+        <span class="offer__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </span>
+        <h3>Every release, first</h3>
+        <p>New music the day it drops, with Spotify, Apple Music, YouTube and Boomplay in one place.</p>
+      </li>
+
+      <li>
+        <span class="offer__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        </span>
+        <h3>Straight from Phivae</h3>
+        <p>Show dates and news here before they go anywhere else.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ Signup ============ -->
   <section class="block" aria-labelledby="notify-title">
-    <h2 class="h-sm" id="notify-title">Know the moment we're live</h2>
-    <p class="lede">One email at launch. Nothing else.</p>
+    <h2 class="h-sm" id="notify-title">Be first through the door</h2>
+    <p class="lede">Drop your email and we'll tell you the minute it opens. One message, nothing else.</p>
 
     <form class="signup" id="signup" novalidate>
-      <input class="input" type="text" id="name" name="name"
-             autocomplete="name" placeholder="Your name" aria-label="Your name" required>
       <input class="input" type="email" id="email" name="email"
-             autocomplete="email" placeholder="you@example.com" aria-label="Your email" required>
-      <button class="btn" type="submit" id="signup-submit">Alert me at launch</button>
+             autocomplete="email" placeholder="you@example.com"
+             aria-label="Your email address" required>
+      <button class="btn" type="submit" id="signup-submit">Tell me when it's live</button>
       <p class="note" id="signup-note" role="status" aria-live="polite"></p>
     </form>
   </section>
 
-  <!-- ============ Follow ============ -->
+  <!-- ============ Elsewhere ============ -->
   <nav class="socials" aria-label="Phivae elsewhere">
     <a href="https://open.spotify.com/artist/4K5HKZy01g9Xzw667xMAVi" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.586 14.424a.623.623 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 1 1-.277-1.215c3.809-.871 7.077-.496 9.712 1.115a.623.623 0 0 1 .207.857Zm1.223-2.722a.78.78 0 0 1-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 1 1-.452-1.492c3.632-1.102 8.147-.568 11.232 1.329a.78.78 0 0 1 .257 1.072Zm.105-2.835c-3.223-1.914-8.54-2.09-11.617-1.156a.935.935 0 1 1-.542-1.79c3.532-1.072 9.404-.865 13.115 1.338a.935.935 0 1 1-.956 1.608Z"/></svg>

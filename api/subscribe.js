@@ -44,10 +44,6 @@ export default async function handler(req, res) {
   const name = clean(body?.name, 120);
   const email = clean(body?.email, 200).toLowerCase();
 
-  if (!name) {
-    return res.status(400).json({ success: false, error: 'Add your name so we know who to greet.' });
-  }
-
   if (!EMAIL_RE.test(email)) {
     return res.status(400).json({ success: false, error: 'That email address doesn’t look right.' });
   }
@@ -78,12 +74,12 @@ export default async function handler(req, res) {
       from: `Phivae Launch <${user}>`,
       to,
       replyTo: email,
-      subject: `Launch list: ${name}`,
-      text: `${name} <${email}> signed up for the launch alert.`,
+      subject: `Launch list: ${name || email}`,
+      text: `${name ? name + ' ' : ''}<${email}> signed up for the launch alert.`,
       html:
         '<div style="font-family:system-ui,sans-serif;line-height:1.6">' +
         '<h2 style="margin:0 0 12px">New launch-list signup</h2>' +
-        `<p style="margin:0"><strong>${escapeHtml(name)}</strong><br>` +
+        (name ? `<p style="margin:0"><strong>${escapeHtml(name)}</strong><br>` : '<p style="margin:0">') +
         `<a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>` +
         `<p style="color:#777;font-size:13px;margin:16px 0 0">${new Date().toUTCString()}</p>` +
         '</div>',

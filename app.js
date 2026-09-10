@@ -8,7 +8,7 @@
   /* ------------------------------------------------------------------------
      LAUNCH TIME — edit this one line to move the countdown.
      ISO 8601 with a timezone. The Z suffix means UTC; Uganda is UTC+3, so
-     18:00Z below is 21:00 in Kampala.
+     17:00Z below is 20:00 in Kampala.
      ------------------------------------------------------------------------ */
   var LAUNCH_AT = '2026-09-11T17:00:00Z';
 
@@ -20,7 +20,7 @@
     minutes: document.getElementById('cd-m'),
     seconds: document.getElementById('cd-s'),
     announce: document.getElementById('cd-announce'),
-    status: document.querySelector('.status')
+    label: document.querySelector('.cd-label')
   };
 
   function pad(value) {
@@ -35,10 +35,8 @@
       el.minutes.textContent = '00';
       el.seconds.textContent = '00';
       el.wrap.setAttribute('data-done', 'true');
-      if (el.status) {
-        el.status.lastChild.nodeValue = ' Launching now ';
-      }
-      if (el.announce) el.announce.textContent = 'Launching now.';
+      if (el.label) el.label.textContent = 'The doors are open';
+      if (el.announce) el.announce.textContent = 'The doors are open.';
       return false;
     }
 
@@ -50,70 +48,60 @@
   }
 
   if (el.wrap && !isNaN(target)) {
-    if (tick()) {
+    var running = tick();
+
+    if (running) {
       var timer = setInterval(function () {
         if (!tick()) clearInterval(timer);
       }, 1000);
-    }
 
-    // Screen readers get the remaining time once, not sixty times a minute.
-    if (el.announce && !el.wrap.getAttribute('data-done')) {
-      el.announce.textContent =
-        el.hours.textContent + ' hours, ' + el.minutes.textContent +
-        ' minutes until launch.';
+      // Screen readers hear the remaining time once, not sixty times a minute.
+      if (el.announce) {
+        el.announce.textContent = el.hours.textContent + ' hours, ' +
+          el.minutes.textContent + ' minutes until the site opens.';
+      }
     }
   }
 
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  /* --- Signup -------------------------------------------------------------- */
+  /* --- Signup ---------------------------------------------------------------
+     One field. Every extra field costs signups, and an address is all that is
+     needed to tell someone the site is live. */
 
   var form = document.getElementById('signup');
   if (!form) return;
 
   var note = document.getElementById('signup-note');
   var submit = document.getElementById('signup-submit');
-  var nameField = document.getElementById('name');
-  var emailField = document.getElementById('email');
+  var email = document.getElementById('email');
 
   function say(message, state) {
     note.textContent = message;
     note.setAttribute('data-state', state || '');
   }
 
-  function flag(field, invalid) {
-    field.setAttribute('aria-invalid', invalid ? 'true' : 'false');
-  }
-
   form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    var name = nameField.value.trim();
-    var email = emailField.value.trim();
+    var value = email.value.trim();
+    var valid = Boolean(value) && email.checkValidity();
+    email.setAttribute('aria-invalid', valid ? 'false' : 'true');
 
-    flag(nameField, !name);
-    flag(emailField, !email || !emailField.checkValidity());
-
-    if (!name) {
-      say('Add your name so we know who to greet.', 'error');
-      nameField.focus();
-      return;
-    }
-
-    if (!email || !emailField.checkValidity()) {
+    if (!valid) {
       say('That email address doesn’t look right.', 'error');
-      emailField.focus();
+      email.focus();
       return;
     }
 
     submit.disabled = true;
-    say('Signing you up…', '');
+    say('Adding you…', '');
 
     fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, email: email })
+      body: JSON.stringify({ email: value })
     })
       .then(function (response) {
         return response.json().then(function (body) {
@@ -123,9 +111,8 @@
       .then(function (result) {
         if (result.ok && result.body.success) {
           form.reset();
-          flag(nameField, false);
-          flag(emailField, false);
-          say('You’re on the list. We’ll email you at launch.', 'ok');
+          email.setAttribute('aria-invalid', 'false');
+          say('You’re on the list. We’ll email you the minute it opens.', 'ok');
         } else {
           say(result.body.error || 'That didn’t go through. Try again.', 'error');
         }
