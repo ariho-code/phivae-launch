@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0710">
+
+<title>Phivae — launching soon</title>
+<meta name="description" content="The new home of Phivae is on the way. Tasobya is out now — stream it while you wait, and get an alert the moment the site goes live.">
+
+<link rel="icon" href="assets/icon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Phivae — launching soon">
+<meta property="og:description" content="Tasobya is out now. Get an alert the moment phivae.com goes live.">
+<meta property="og:image" content="https://phivae.com/assets/phivae.jpg">
+<meta property="og:url" content="https://phivae.com">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<main id="main">
+
+  <!-- ===================== Hero ===================== -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+
+    <div class="shell hero__grid">
+      <div class="hero__copy">
+        <img class="hero__logo reveal" src="assets/logo.png" alt="Phivae"
+             width="720" height="720" fetchpriority="high">
+
+        <p class="status reveal" data-delay="1">
+          <span class="status__dot" aria-hidden="true"></span>
+          Launching soon
+        </p>
+
+        <h1 class="hero__title reveal" data-delay="2">
+          The new home of Phivae
+        </h1>
+
+        <p class="hero__lede reveal" data-delay="3">
+          The full site is on its way. <strong>Tasobya</strong> is out now —
+          press play while you wait, and we'll tell you the moment we go live.
+        </p>
+
+        <div class="hero__actions reveal" data-delay="4">
+          <a class="btn btn--primary" href="#listen">
+            <i class="fa-solid fa-play" aria-hidden="true"></i>
+            Stream Tasobya
+          </a>
+          <a class="btn btn--ghost" href="#notify">Get launch alerts</a>
+        </div>
+      </div>
+
+      <div class="hero__portrait reveal" data-delay="2">
+        <img src="assets/phivae.jpg" alt="Phivae" width="1080" height="1080"
+             fetchpriority="high" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Tasobya ===================== -->
+  <section class="section" id="listen" aria-labelledby="listen-title">
+    <div class="shell">
+      <div class="section-head">
+        <h2 id="listen-title">Out now</h2>
+      </div>
+
+      <div class="track">
+        <div class="track__art">
+          <img src="assets/tasobya.jpg" alt="Tasobya cover art"
+               width="640" height="640" loading="lazy" decoding="async">
+        </div>
+
+        <div class="track__body">
+          <p class="track__eyebrow">New single</p>
+          <h3 class="track__title">Tasobya</h3>
+          <p class="track__note">
+            Streaming everywhere now. Add it, share it, put it on repeat —
+            it all counts while we build up to launch.
+          </p>
+
+          <div class="track__player">
+            <iframe
+              title="Tasobya on Spotify"
+              src="https://open.spotify.com/embed/track/2UQF9lhGULdbj2mba6wCni?utm_source=generator"
+              width="100%" height="352" frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"></iframe>
+          </div>
+
+          <a class="btn btn--gold" href="https://open.spotify.com/track/2UQF9lhGULdbj2mba6wCni"
+             target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-spotify" aria-hidden="true"></i>
+            Open in Spotify
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Notify ===================== -->
+  <section class="section notify" id="notify" aria-labelledby="notify-title">
+    <div class="shell shell--narrow">
+      <h2 id="notify-title">Know first</h2>
+      <p class="notify__lede">
+        One email when the site goes live. Nothing else, and you can leave any time.
+      </p>
+
+      <form class="signup" id="signup" novalidate>
+        <div class="signup__fields">
+          <div class="field">
+            <label for="name">Name</label>
+            <input class="input" type="text" id="name" name="name"
+                   autocomplete="name" placeholder="Your name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" type="email" id="email" name="email"
+                   autocomplete="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <button class="btn btn--primary btn--block" type="submit" id="signup-submit">
+          Alert me at launch
+        </button>
+
+        <p class="note" id="signup-note" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== Follow ===================== -->
+  <section class="section follow" aria-labelledby="follow-title">
+    <div class="shell">
+      <div class="section-head">
+        <h2 id="follow-title">Follow</h2>
+      </div>
+
+      <ul class="links">
+        <li>
+          <a href="https://open.spotify.com/artist/4K5HKZy01g9Xzw667xMAVi" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-spotify" aria-hidden="true"></i>
+            <span>Spotify</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://music.apple.com/us/artist/phivae/1815449659" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-apple" aria-hidden="true"></i>
+            <span>Apple Music</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@Hernamephivae" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+            <span>YouTube</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/itsphivae/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            <span>Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/@phivae?lang=en" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+            <span>TikTok</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell foot__inner">
+    <span>&copy; <span id="year">2026</span> Phivae</span>
+    <span>Kampala, Uganda</span>
+  </div>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

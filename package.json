@@ -1,0 +1,10 @@
+{
+  "name": "phivae-launch",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Launch page for phivae.com",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}
