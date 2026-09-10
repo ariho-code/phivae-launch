@@ -1,33 +1,48 @@
 # phivae.com — launch page
 
 A single-page holding site for **phivae.com** while the full site is built.
-Static HTML/CSS/JS plus one serverless function for launch-list signups.
+Static HTML/CSS/JS plus one serverless function that emails launch-list signups.
 
 ## What's on it
 
-- Hero with the Phivae mark, a "launching soon" status and the studio portrait
-- **Tasobya** — cover art, the Spotify embed, and a direct link to the track
+- The Phivae mark, a "launching soon" status and a countdown to launch
+- **Tasobya** — cover art linking straight to Spotify, plus the Spotify player
 - Launch-list signup (name + email)
 - Links to Spotify, Apple Music, YouTube, Instagram and TikTok
+
+One centred column at every width. No portrait, no cards, no icon font — the
+social marks are inline SVG, so the page pulls in nothing but the webfont.
+
+## Moving the countdown
+
+One line, at the top of `app.js`:
+
+```js
+var LAUNCH_AT = '2026-09-11T17:00:00Z';
+```
+
+ISO 8601 with a timezone. `Z` is UTC and Uganda is UTC+3, so `17:00Z` is
+**20:00 in Kampala**. When it reaches zero the digits hold at `00:00:00` and
+the status flips to "Launching now".
 
 ## Layout
 
 ```
 index.html          the page
 styles.css          all styling; design tokens at the top of the file
-app.js              signup form handling
+app.js              countdown + signup form
 api/subscribe.js    serverless signup endpoint
-assets/             logo, portrait, cover art, favicon (312 KB total)
+devserver.py        local preview only, never deployed
+assets/             logo, cover art, favicon (94 KB total)
 ```
 
-No build step and no framework. Vercel serves the static files and runs
-`api/subscribe.js` as a Node function.
+No build step and no framework.
 
-## Signup endpoint — configuration required
+## Where signups go
 
-`POST /api/subscribe` takes `{ name, email }` and emails the signup to you.
-A serverless function has no filesystem, so **the email is the record**. Set
-these in Vercel → Project → Settings → Environment Variables:
+`POST /api/subscribe` emails each signup straight to the inbox below. **There is
+no database** — the email is the record, and the list is whatever is in that
+inbox. Set these in Vercel → Project → Settings → Environment Variables:
 
 | Variable | Value |
 |---|---|
@@ -38,24 +53,23 @@ these in Vercel → Project → Settings → Environment Variables:
 Redeploy after adding them.
 
 **Until they are set the form does not accept signups** — it returns a 503 and
-tells the visitor to follow on Instagram instead. That is deliberate: it never
-tells someone they are subscribed when nothing was recorded. Every attempt is
-also written to the function log as a fallback.
+points visitors at Instagram instead. That is deliberate: it never tells someone
+they are subscribed when nothing was recorded. Every attempt is also written to
+the Vercel function log as a fallback.
 
 ## Local preview
 
 ```sh
-python3 -m http.server 8899
+python3 devserver.py       # http://127.0.0.1:8899
 ```
 
-Then open <http://127.0.0.1:8899>. The signup endpoint does not run under a
-plain static server — use `vercel dev` if you need to exercise it.
+`devserver.py` serves the page and stands in for the signup endpoint, writing to
+`subscribers.local.jsonl` so the form can be exercised end to end offline. It is
+a development tool only; production uses `api/subscribe.js`.
 
 ## Notes
 
 - The track is titled **Tasobya** on Spotify. Correct it here and on the
   streaming platforms together if that spelling is wrong.
-- No launch date is shown, because none was set. Adding a countdown is a small
-  change once there is a date to count to.
-- The logo is derived from the supplied artwork with the black background
-  removed, so it sits on any dark surface without a halo.
+- The logo is derived from the artwork on the black background, with alpha taken
+  from luminance, so it sits on any dark surface without a halo.
